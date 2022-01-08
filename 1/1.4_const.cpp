@@ -175,13 +175,75 @@ int main() {
 //         p5 = &i2; // 常量指针的常量也不能改地址
 
 
+    }
+
+    {
+
+//        const int i1 = 1;
+//        const int * p1 = &i1;
+
+        int i1 = 1;
+        int i1_2 = 1;
+        int * const p1 = &i1;
+        // p1 = &ci1_2 // 地址不可改
+        *p1 = 2; // 值可改
+
+        const int i2 = 1;
+        int i2_2 = 1;
+        // int * const p2 = &i2; //申明错误， 右值是常量值，左值是变量值
+        // 右值是常量时，左值必须是常量
+        const int * const p2 = &i2;
+        // * p3 或 * const p3 仅影响地址，影响值的只有 int 前的const
+        const int * p3 = &i2;
+
+//        int const i4 = 10;
+//        const int i5 = 11;
 
 
 
 
 
+    }
+
+    {
+        int i1 = 1;
+        int * p1 = &i1;
+        int const * p_cv;
+        p_cv = &i1;
 
 
+        int * const p_ca = &i1;
+        * p_ca = 12;
+
+
+//        const int * p_cv2 = &i1;
+//        * p_cv2 = 11;
+
+//        int const * p_cv = &i1;
+//        p_cv = 10;
+//        int const * p_ca ;
+
+    }
+
+    {
+        int i = 0;
+        int * const p1 = &i;
+        const int ci = 42;
+        const int * p2 = &ci;
+        const int * const p3 = p2;
+        const int * const p4 = p1;
+        const int &r = ci;
+
+        i = ci;
+        p2 = p3;
+
+
+        // int * p =p3; // 非法，右值的值不可改，左值的值可改，不匹配
+        p2 = &i; // 宽松的右值，可以给紧的左值，紧是宽的子集
+        // int &r2 = ci; // 非法，宽松的左值 是变量，不能接受 紧的右值 常量
+        const int &r2 = i; // 右值是变量，左值是引用 const修饰的是值 紧是宽的子集
+        // r2 = 10; // 非法
+.
     }
 
 
