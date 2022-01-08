@@ -234,6 +234,9 @@ int main() {
         const int * const p4 = p1;
         const int &r = ci;
 
+        p1 = &i;
+        p1 = nullptr;
+
         i = ci;
         p2 = p3;
 
@@ -243,8 +246,8 @@ int main() {
         // int &r2 = ci; // 非法，宽松的左值 是变量，不能接受 紧的右值 常量
         const int &r2 = i; // 右值是变量，左值是引用 const修饰的是值 紧是宽的子集
         // r2 = 10; // 非法
-.
     }
+
 
 
     cout << endl;
