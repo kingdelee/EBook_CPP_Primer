@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <typeinfo>
 using namespace std;
 
 int getBufSize();
@@ -13,18 +13,30 @@ int main() {
     cout << "----1:" << endl;
 
     {
-        double d = 10;
+        int i = 4;
+
+    }
+
+    {
+        double d = 8;
 
 //        double * pd = &d;
         // 没有这种定义方式
         // * double pd = &d;
 
-        // 申明 类型别名 1
+        // 声明 基本类型别名 1
         typedef double dType;
 
+        // 声明 指针类型的别名
+        // TODO:如何判断 别名类型的类型
         typedef double * dPType;
+        dPType s = &d;
+        cout << "s:" << s << endl;
+        cout << "&s:" << &s << endl;
+        cout << "*s:" << *s << endl;
 
-        *dPType = &d;
+        // *dPType = &d; // 非法
+
 
 
         //  链式
@@ -117,6 +129,20 @@ int main() {
 
         // const int 必须初始化
         // decltype(cj) z; // 非法
+
+
+    }
+
+    {
+        int i = 10, *p = &i, &r = i;
+        decltype(r + 0) b;
+
+        // decltype(*p) c; // 等价于 &c, 必须初始化 编译失败
+        decltype(*p) c = i;
+
+        // 加了括号后，((i)) 表示引用 &i
+        // decltype((i)) d; // 非法
+        decltype((i)) d = i;
 
     }
 
