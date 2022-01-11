@@ -13,7 +13,22 @@ int main() {
     cout << "----1:" << endl;
 
     {
+        // int * 类型别名
+
         int i = 4;
+        int * pi = &i;
+
+        typedef int * i_p_Type;
+
+        i_p_Type pi2 = &i;
+
+        cout << "pi:" << pi << endl;
+        cout << "&pi:" << &pi << endl;
+        cout << "*pi:" << *pi << endl;
+        
+        cout << "pi2:" << pi2 << endl;
+        cout << "&pi2:" << &pi2 << endl;
+        cout << "*pi2:" << *pi2 << endl;
 
     }
 
@@ -30,7 +45,8 @@ int main() {
         // 声明 指针类型的别名
         // TODO:如何判断 别名类型的类型
         typedef double * dPType;
-        dPType s = &d;
+
+        dPType s = &d;  //
         cout << "s:" << s << endl;
         cout << "&s:" << &s << endl;
         cout << "*s:" << *s << endl;
