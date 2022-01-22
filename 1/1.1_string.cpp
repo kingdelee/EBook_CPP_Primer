@@ -49,4 +49,30 @@ int main(){
     cout<<static_cast<void*>(name)<<endl;
     cout<<static_cast<void*>(&name[1])<<endl;
 //    cout<<static_cast<void*>(designer)<<endl;
+
+
+    {
+        char arr[11] = " abc defg ";
+        int len = strlen(arr);
+        cout << "len:" << len << endl;
+    }
+
+    {
+//        int a = 12;
+        int a = -12;
+//        printf("x:%x", a);
+        cout << "hex:" << hex << *&a << endl;
+        cout << "hex:" << hex << a << endl;
+        cout << "oct:" << oct << a << endl;
+        bitset<32> bin(a);
+        cout << "bin:" << bin << endl;
+
+        cout << "（byte*）:" << &a << endl;
+        cout << "（byte*）:" << (byte *) &a << endl;
+
+
+    }
+
+
+
 }
